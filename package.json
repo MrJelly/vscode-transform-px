@@ -1,0 +1,99 @@
+{
+	"name": "transform-px",
+	"displayName": "transform-px",
+	"description": "0.0",
+	"version": "0.0.5",
+	"publisher": "jelly-club",
+	"engines": {
+		"vscode": "^1.54.0"
+	},
+	"categories": [
+		"Formatters",
+		"Snippets",
+		"Other"
+	],
+	"keywords": [
+		"px",
+		"PX",
+		"px to PX"
+	],
+	"icon": "imgs/pxToPXIcon.png",
+	"activationEvents": [
+		"onCommand:extension.pxToPX",
+		"onCommand:extension.PXTopx",
+		"onCommand:extension.pxToPXAndPXTopx",
+		"onCommand:extension.pxPerPX"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"configuration": {
+			"title": "px to PX configuration",
+			"properties": {
+				"px-to-PX.px-per-PX": {
+					"type": "integer",
+					"default": 16,
+					"description": "Number of pixels per 1PX."
+				},
+				"px-to-PX.only-change-first-ocurrence": {
+					"type": "boolean",
+					"default": false,
+					"description": "Set value to only change first occurence of px/PX per selection."
+				},
+				"px-to-PX.notify-if-no-changes": {
+					"type": "boolean",
+					"default": true,
+					"description": "Show a warning if no conversion could be made."
+				},
+				"px-to-PX.number-of-decimals-digits": {
+					"type": "integer",
+					"default": 4,
+					"description": "Maximum number of decimals digits a px or PX can have."
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "extension.pxToPX",
+				"title": "px to PX: Converts px to PX"
+			},
+			{
+				"command": "extension.PXTopx",
+				"title": "PX to px: Convert PX to px"
+			},
+			{
+				"command": "extension.pxToPXAndPXTopx",
+				"title": "px to PX, and PX to px. Converts selected text from px to PX, and PX to px."
+			},
+			{
+				"command": "extension.pxPerPX",
+				"title": "Change px per PX"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "extension.pxToPXAndPXTopx",
+				"key": "Alt+z"
+			},
+			{
+				"command": "extension.pxPerPX",
+				"key": "Alt+s"
+			}
+		]
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.54.0",
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "16.x",
+		"eslint": "^8.16.0",
+		"glob": "^8.0.3",
+		"mocha": "^10.0.0",
+		"typescript": "^4.7.2",
+		"@vscode/test-electron": "^2.1.3"
+	}
+}
